@@ -1,6 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, createContext} from 'react'
+
+const UserContext = createContext()
 
 export const WelcomeHome = () => {
+
     const [username, setUsername] = useState('')
 
     const handleSubmit = (e) => {
@@ -10,14 +13,18 @@ export const WelcomeHome = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <h1>Hello, What is your name</h1>
-                <input
-                    onChange={e => setUsername(e.target.value)}
-                    value={username}
-                />
-                <button type='submit'>Submit</button>
-            </form>
+            <UserContext.Provider value={{ username, setUsername}}>
+                <form onSubmit={handleSubmit}>
+                    <h1>Hello, What is your name</h1>
+                    <input
+                        onChange={e => setUsername(e.target.value)}
+                        value={username}
+                    />
+                    <button type='submit'>Submit</button>
+                </form>
+            </UserContext.Provider>
         </div>
     )
 }
+
+export {UserContext}
