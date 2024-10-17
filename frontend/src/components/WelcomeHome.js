@@ -13,7 +13,7 @@ export const WelcomeHome = () => {
 
     return (
         <div>
-            <UserContext.Provider value={{ username, setUsername}}>
+            <UserContext.Provider value={{ username, setUsername }}>
                 <form onSubmit={handleSubmit}>
                     <h1>Hello, What is your name</h1>
                     <input
