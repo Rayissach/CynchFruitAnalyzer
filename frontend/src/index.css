@@ -5,12 +5,22 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
+
+html {
+  margin: 0;
+  height: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+}
 
 @tailwind base;
 @tailwind components;

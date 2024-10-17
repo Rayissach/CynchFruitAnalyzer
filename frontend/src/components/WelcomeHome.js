@@ -1,35 +1,30 @@
-import React, {useState, createContext} from 'react'
-import { useNavigate, Outlet } from 'react-router-dom'
-
-export const UserContext = createContext()
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../App'
 
 export const WelcomeHome = () => {
 
     const navigate = useNavigate()
-    const [username, setUsername] = useState('')
+    const { username, setUsername } = useContext(UserContext)
 
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(username)
         if (username.trim() !== '') {
-            navigate('search')
+            navigate('/search')
         }
     }
 
     return (
         <div>
-            <h1>Hello</h1>
-            <UserContext.Provider value={{ username, setUsername }}>
-                <form onSubmit={handleSubmit}>
-                    <h1>Hello, What is your name</h1>
-                    <input
-                        onChange={e => setUsername(e.target.value)}
-                        value={username}
-                    />
-                    <button type='submit'>Submit</button>
-                </form>
-                <Outlet />
-            </UserContext.Provider>
+            <form onSubmit={handleSubmit}>
+                <h1>Hello, What is your name</h1>
+                <input
+                    onChange={e => setUsername(e.target.value)}
+                    value={username}
+                />
+                <button type='submit'>Submit</button>
+            </form>
         </div>
     )
 }
