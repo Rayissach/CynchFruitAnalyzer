@@ -4,6 +4,7 @@ import { UserContext } from '../App';
 export const Search = () => {
   const { username } = useContext(UserContext);
   const [fruits, setFruits] = useState([])
+  const [query, setQuery] = useState('')
 
   useEffect(() => {
     const handleFruits = async () => {
@@ -14,13 +15,18 @@ export const Search = () => {
     handleFruits()
   },[])
 
+  
+
   return (
     <div>
       <h1>Hello, {username}</h1>
       <p>Let's Analyze some fruit</p>
       <input 
         placeholder="Type a fruit you'd like to analyze"
+        onChange={e => setQuery(e.target.value)}
+        value={query}
       />
+      {query}
     </div>
   );
 };
